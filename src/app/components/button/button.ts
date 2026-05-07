@@ -16,7 +16,7 @@ export class Button {
 
   protected getHostsClasses() {
     const base =
-      'inline-flex items-center justify-center px-3 py-2 cursor-pointer rounded-lg transition-colors duration-200';
+      'flex items-center justify-center px-3 py-2 cursor-pointer rounded-lg transition-colors duration-200';
 
     const variants = {
       default: 'text-zinc-100 bg-zinc-900 hover:bg-zinc-800',

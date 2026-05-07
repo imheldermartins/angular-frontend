@@ -1,1 +1,70 @@
-<p>sign-in works!</p>
+<div class="grid items-center">
+  <h1 typography class="mb-4">Entre com sua conta</h1>
+
+  <form [formRoot]="formData">
+    @if (formData().errors().length > 0) {
+      <div
+        class="p-3 text-sm font-medium bg-red-100 border border-red-500 text-red-500 rounded-lg mb-4"
+      >
+        {{
+          formData()
+            .errors()
+            .map((error) => error.message)
+            .join(', ')
+        }}
+      </div>
+    }
+
+    <div class="flex flex-col gap-3 justify-center">
+      <!-- <input
+        type="email"
+        class="p-2 ring-1 rounded-lg outline-none"
+        [ngClass]="{
+          'ring-red-500 text-red-500': formData.email().invalid() && formData.email().touched(),
+          'ring-slate-300': !(formData.email().invalid() && formData.email().touched()),
+        }"
+        [formField]="formData.email"
+      /> -->
+      <input ui-input type="text">
+      <!-- @if (formData.email().invalid() && formData.email().touched()) {
+        @for (error of formData.email().errors(); track error.kind) {
+          <span class="text-sm text-red-500">{{ error.message }}</span>
+        }
+      } -->
+
+      <!-- <input
+        type="password"
+        [formField]="formData.password"
+        class="p-2 ring-1 ring-slate-300 rounded-lg"
+      /> -->
+    </div>
+
+    <button
+      ui-button
+      type="submit"
+      class="mt-4 w-full"
+      [disabled]="formData().submitting()"
+      [variant]="formData().submitting() ? 'success' : 'default'"
+    >
+      @if (formData().submitting()) {
+        <div class="flex items-center gap-1">
+          <div
+            class="w-3 h-3 border-l-2 border-white rounded-full animate-spin ease-in duration-75"
+          ></div>
+          Enviando...
+        </div>
+      } @else {
+        Entrar
+      }
+    </button>
+  </form>
+</div>
+
+<!-- <div class="relative">
+    <input
+        class="peer w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+    />
+    <label class="absolute cursor-text bg-white px-1 left-2.5 top-2.5 text-slate-400 text-sm transition-all transform origin-left peer-focus:-top-2 peer-focus:left-2.5 peer-focus:text-xs peer-focus:text-slate-400 peer-focus:scale-90">
+        Type Here...
+    </label>
+</div> -->
