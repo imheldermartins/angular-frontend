@@ -1,13 +1,21 @@
 <main class="w-full h-svh flex items-center justify-center">
   <div class="max-w-fit h-fit border border-slate-500 p-3 rounded-lg text-2xl">
     
-    Contador: {{ count() }}
+    <h1 typography class="my-3">Contador: {{ count() }}</h1>
 
-    <br><br>
-    
-    <button ui-button (click)="increment()">
-      Incrementar
-    </button>
+    <div class="flex gap-1 items-center">
+      <button ui-button>
+        Normal
+      </button>
+      
+      <button ui-button variant="error" (click)="decrement()">
+        Decrementar
+      </button>
+
+      <button ui-button variant="success" (click)="increment()">
+        Incrementar
+      </button>
+    </div>
 
   </div>
 </main>
