@@ -2,7 +2,8 @@ import { Directive, ElementRef, inject, computed, Input, input } from '@angular/
 import { cn } from '../../../utils/cn';
 
 @Directive({
-  selector: 'h1[typography], h2[typography], h3[typography], p[typography], span[typography]',
+  selector:
+    'h1[typography], h2[typography], h3[typography], p[typography], span[typography], a[typography]',
   host: {
     '[class]': 'hostClasses()',
   },
@@ -25,6 +26,7 @@ export class Typography {
       h3: 'text-xl font-medium',
       p: 'text-base font-normal',
       span: 'text-sm font-normal',
+      a: 'text-blue-500 hover:text-blue-700',
     };
 
     return cn(base, stylesByTag[tagName], this.className());
