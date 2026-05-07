@@ -1,9 +1,11 @@
 <main class="w-full h-svh flex items-center justify-center">
-  <div class="max-w-fit h-fit bg-blue-500 p-3 rounded-lg text-white text-2xl">
+  <div class="max-w-fit h-fit border border-slate-500 p-3 rounded-lg text-2xl">
     
     Contador: {{ count() }}
+
+    <br><br>
     
-    <button (click)="increment()">
+    <button ui-button (click)="increment()">
       Incrementar
     </button>
 
