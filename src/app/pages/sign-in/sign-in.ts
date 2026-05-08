@@ -1,11 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { email, form, FormRoot, required } from '@angular/forms/signals';
 
 import { Typography } from '../../components/typography/typography';
 import { Button } from '../../components/button/button';
 import { Input } from '../../components/input/input';
-
-import { email, form, FormField, FormRoot, required } from '@angular/forms/signals';
-// import { NgClass } from '@angular/common';
+import { firstValueFrom } from 'rxjs';
 
 interface SignInForm {
   email: string;
@@ -13,10 +13,12 @@ interface SignInForm {
 }
 
 @Component({
-  imports: [FormField, Typography, Button, FormRoot, Input],
+  imports: [Typography, Button, FormRoot, Input],
   templateUrl: './sign-in.html',
 })
 export class SignIn {
+  private http: HttpClient = inject(HttpClient);
+
   formModel = signal<SignInForm>({
     email: '',
     password: '',
@@ -34,8 +36,19 @@ export class SignIn {
       submission: {
         action: async (field) => {
           const data = await field();
+          const payload = data.value();
 
-          console.log(data.value());
+          try {
+            const response = await firstValueFrom(
+              this.http.get('https://jsonplaceholder.typicode.com/todos/1'),
+            );
+
+            if (response) {
+              console.log('API Response: ', response);
+            }
+          } catch (error) {
+            console.error('ERROR API: ', error);
+          }
 
           return { kind: 'serverError', message: 'Credencias inválidas' };
         },
