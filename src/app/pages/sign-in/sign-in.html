@@ -16,27 +16,9 @@
     }
 
     <div class="flex flex-col gap-3 justify-center">
-      <!-- <input
-        type="email"
-        class="p-2 ring-1 rounded-lg outline-none"
-        [ngClass]="{
-          'ring-red-500 text-red-500': formData.email().invalid() && formData.email().touched(),
-          'ring-slate-300': !(formData.email().invalid() && formData.email().touched()),
-        }"
-        [formField]="formData.email"
-      /> -->
-      <input ui-input type="text">
-      <!-- @if (formData.email().invalid() && formData.email().touched()) {
-        @for (error of formData.email().errors(); track error.kind) {
-          <span class="text-sm text-red-500">{{ error.message }}</span>
-        }
-      } -->
+        <text-input [type]="'email'" label="E-mail" placeholder="seu@email.com" [field]="formData.email" />
 
-      <!-- <input
-        type="password"
-        [formField]="formData.password"
-        class="p-2 ring-1 ring-slate-300 rounded-lg"
-      /> -->
+        <text-input [type]="'password'" label="Senha" placeholder="••••••••" [field]="formData.password" />
     </div>
 
     <button
