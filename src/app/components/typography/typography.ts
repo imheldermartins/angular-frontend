@@ -14,7 +14,7 @@ export class Typography {
   className = input<string>('', { alias: 'class' });
 
   protected hostClasses = computed(() => {
-    const base = 'text-zinc-800 antialiased';
+    const base = 'text-slate-700 antialiased';
     /**
      * Returns tag name as h1, h2, h3, p, span and then applies the corresponding styles based on the tag name.
      */
@@ -26,7 +26,7 @@ export class Typography {
       h3: 'text-xl font-medium',
       p: 'text-base font-normal',
       span: 'text-sm font-normal',
-      a: 'text-blue-500 hover:text-blue-700',
+      a: 'font-bold text-slate-700 hover:text-slate-600',
     };
 
     return cn(base, stylesByTag[tagName], this.className());

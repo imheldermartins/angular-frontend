@@ -9,7 +9,7 @@ import { NgClass } from '@angular/common';
   template: `
     <div class="w-full flex flex-col gap-1 items-start">
       @if (label()) {
-        <label [for]="id()" class="text-sm font-medium text-zinc-700">
+        <label [for]="id()" class="text-sm font-medium text-slate-500">
           {{ label() }}
         </label>
       }
@@ -21,8 +21,9 @@ import { NgClass } from '@angular/common';
         [formField]="field()"
         class="w-full p-2 ring-1 rounded-lg outline-none transition-all"
         [ngClass]="{
-          'ring-red-500 text-red-600 bg-red-50 focus:ring-red-600': hasError(),
-          'ring-slate-300 focus:ring-slate-500': !hasError(),
+          'ring-red-400 text-red-500 bg-red-50 focus:ring-red-600 placeholder:text-red-300':
+            hasError(),
+          'ring-slate-400 focus:ring-slate-500 placeholder:text-slate-400': !hasError(),
         }"
       />
 

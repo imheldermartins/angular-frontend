@@ -1,7 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
-import { Button } from './components/button/button';
 import { Typography } from './components/typography/typography';
 
 @Component({
@@ -11,7 +10,8 @@ import { Typography } from './components/typography/typography';
 })
 export class App {
   navLinks = [
-    { label: 'Dashboard', routerLink: '/dashboard' },
-    { label: 'Login', routerLink: '/sign-in' },
+    { label: 'Dashboard', routerLink: '/dashboard', icon: 'pi pi-home' },
+    { label: 'Cadastro de Usuários', routerLink: '/sign-up', icon: 'pi pi-user-plus' },
+    { label: 'Login', routerLink: '/sign-in', icon: 'pi pi-sign-in' },
   ];
 }

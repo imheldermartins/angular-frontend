@@ -1,0 +1,63 @@
+<div class="grid items-center">
+  <h1 typography class="mb-4">Cadastro de Usuário</h1>
+
+  <form [formRoot]="formData">
+
+    @if(successMessage()) {
+      <div class="w-full text-center bg-green-200 text-green-500 border border-green-500 mb-4 rounded-lg p-2 shadow-lg shadow-green-200">
+        <span class="font-semibold text-base">{{ successMessage() }}</span>
+      </div>
+    }
+
+    @if (formData().errors().length > 0) {
+      <div
+        class="border-l-2 border-l-red-500 pl-4 flex flex-col gap-0.5 mb-4"
+      >
+      @for (errorStack of formData().errors(); track errorStack.message) {
+        @for (errorPart of formatErrorMessages(errorStack.message!); track errorPart) {
+          <span typography class="text-red-500 text-sm mb-1">{{ errorPart }}</span>
+        }
+      }
+      </div>
+    }
+
+    <div class="flex flex-col gap-3 justify-center">
+        @for (inputField of inputFields; track $index) {
+          <text-input
+            [type]="inputField.type"
+            [label]="inputField.label"
+            [placeholder]="inputField.placeholder"
+            [field]="getFormField(inputField.fieldName)"
+          />
+        }
+    </div>
+
+    <button
+      ui-button
+      type="submit"
+      class="mt-4 w-full"
+      [disabled]="formData().submitting()"
+      [variant]="formData().submitting() ? 'success' : 'default'"
+    >
+      @if (formData().submitting()) {
+        <div class="flex items-center gap-1">
+          <div
+            class="w-3 h-3 border-l-2 border-white rounded-full animate-spin ease-in duration-75"
+          ></div>
+          Enviando...
+        </div>
+      } @else {
+        Entrar
+      }
+    </button>
+  </form>
+</div>
+
+<!-- <div class="relative">
+    <input
+        class="peer w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
+    />
+    <label class="absolute cursor-text bg-white px-1 left-2.5 top-2.5 text-slate-400 text-sm transition-all transform origin-left peer-focus:-top-2 peer-focus:left-2.5 peer-focus:text-xs peer-focus:text-slate-400 peer-focus:scale-90">
+        Type Here...
+    </label>
+</div> -->

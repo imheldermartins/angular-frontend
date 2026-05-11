@@ -2,7 +2,12 @@
 
   <div class="w-64 flex flex-col gap-1 bg-slate-200 border-r border-slate-300 p-4">
     @for (link of navLinks; track link.routerLink) {
-      <a typography [routerLink]=[link.routerLink]>{{ link.label }}</a>
+      <a typography [routerLink]=[link.routerLink] class="hover:bg-slate-300 rounded-lg p-2">
+        <div class="flex items-center gap-2">
+          <i class="{{ link.icon }}"></i>
+          <span>{{ link.label }}</span>
+        </div>
+      </a>
     }
   </div>
 

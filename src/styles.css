@@ -1,7 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
 
+@import "tailwindcss-primeui";
+@import "primeicons/primeicons.css";
+
 body {
-  @apply bg-slate-100 text-gray-800;
+  @apply bg-slate-100 text-slate-900;
 }
